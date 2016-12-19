@@ -1,0 +1,23 @@
+FUNC VOID main() 
+{ 
+	INT n,u,v,x
+	READ n
+	u := 0
+	v := 1
+
+	PRINT u , "\n"
+	PRINT v , "\n"
+
+	WHILE n
+	DO
+		{
+			x := u + v
+			PRINT x , "\n"
+
+			u := v
+			v := x
+
+			n:= n-1
+		}
+	DONE
+}

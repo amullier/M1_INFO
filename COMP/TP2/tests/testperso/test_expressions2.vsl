@@ -1,0 +1,12 @@
+FUNC VOID main() {
+	INT x,y
+	READ x
+	y := 3
+	PRINT x,"+",y," = ", x+y ,"\n"
+	PRINT x,"-",y," = ", x-y ,"\n"
+	PRINT x,"*",y," = ", x*y ,"\n"
+	PRINT x,"/",y," = ", x/y ,"\n"
+	PRINT x,"+",1," = ", x+1 ,"\n"
+	PRINT x,"* (",x,"+",y,") = ", x*(x+y) ,"\n"
+	PRINT x,"*  ",x,"+",y,"  = ", x * x + y  ,"\n"
+}

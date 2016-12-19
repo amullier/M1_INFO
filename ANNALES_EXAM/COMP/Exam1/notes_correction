@@ -1,0 +1,78 @@
+Q1.
+
+S[ts] -> id '++'
+	{
+		place = NouvVar();
+		S.code = (+,place,id,1) @@ (=,ts.place(is.vallex),place, _ )		
+	}
+
+Q2.
+
+S[ts] -> id '+=' E
+	{
+		place = NouvVar();
+		S.code = E.code @@ (+,place,id,E.place) @@ (=,ts.place(is.vallex),place, _ )		
+	}
+
+Q3.
+
+OP : '+' | '*' | '/' | '-' ;
+
+S[ts] -> id OP '=' E
+	{
+		place = NouvVar();
+		S.code = E.code @@ (OP.vallex,place,id,E.place) @@
+					(=,ts.place(id.vallex),place, _ )
+	}
+
+Q4.
+
+S[ts] -> for(S1 ; B ; S2) do LS done
+	{
+		label_debut = nouvLabel();
+		label_fin   = nouvLabel();
+		B.siFaux = label_fin;
+		S.code = S1.code @@ (label label_debut, _ , _ , _ ) @@ B.code @@
+					LS.code @@ S2.code @@ (goto label_debut, _ , _ , _ ) @@
+					(label label_fin , _ , _ , _ )
+	}
+
+Q5.
+/**
+ * Analyseur syntaxique
+ */
+object : 
+	'{' bloc liste_bloc '}'
+;
+
+liste_bloc : 
+	',' bloc liste_bloc 
+	| //Mot vide
+;
+
+bloc:
+	object
+	| INT 
+	| FLOAT
+	| STRING
+	| BOOLEAN
+	| '[' tab_json ']'
+	| NULL
+;
+
+tab_json :
+	object liste_object
+;
+liste_object :
+	',' object liste_object
+	| //Mot vide
+;
+
+/**
+ * Analyseur lexical
+ */
+INT : (0..9)+;
+FLOAT : (0..9)+ '.' (0..9)+;
+NULL : 'null';
+BOOLEAN : 'true' | 'false';
+STRING : "\"" ('a'..'z' | 'A'..'Z')* "\"";

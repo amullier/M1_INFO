@@ -1,0 +1,188 @@
+Un client n°1 cherche a obtenir un groupe.
+Un client n°8 cherche a obtenir un groupe.
+Un client n°9 cherche a obtenir un groupe.
+Un client n°6 cherche a obtenir un groupe.
+Un client n°7 cherche a obtenir un groupe.
+Un client n°5 cherche a obtenir un groupe.
+Un client n°4 cherche a obtenir un groupe.
+Un client n°3 cherche a obtenir un groupe.
+Un client n°2 cherche a obtenir un groupe.
+Un client n°10 cherche a obtenir un groupe.
+Un client n°11 cherche a obtenir un groupe.
+Un client n°12 cherche a obtenir un groupe.
+Le client n°1 se voit attribuer le groupe : leBowling.Groupe@549760f4
+Le client n°1 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°12 se voit attribuer le groupe : leBowling.Groupe@549760f4
+Le client n°12 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°11 se voit attribuer le groupe : leBowling.Groupe@549760f4
+Le client n°11 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°11 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°10 se voit attribuer le groupe : leBowling.Groupe@2c80255a
+Le client n°10 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°11 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@549760f4 => 1
+Le client n°12 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°2 se voit attribuer le groupe : leBowling.Groupe@2c80255a
+Le client n°2 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°12 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@549760f4 => 2
+Le client n°1 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°3 se voit attribuer le groupe : leBowling.Groupe@2c80255a
+Le client n°3 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°1 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@549760f4 => 3
+Je reveille mon groupe
+Le client n°1 est sorti.
+Le client n°1 reserve une piste pour son groupe.
+Le client n°3 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°1 joue.
+Le client n°4 se voit attribuer le groupe : leBowling.Groupe@57c44c58
+Le client n°4 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°3 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@2c80255a => 1
+Je reveille mon groupe
+Le client n°12 est sorti.
+Le client n°2 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°12 reserve une piste pour son groupe.
+Le client n°12 joue.
+Le client n°5 se voit attribuer le groupe : leBowling.Groupe@57c44c58
+Le client n°5 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°2 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@2c80255a => 2
+Le client n°10 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°7 se voit attribuer le groupe : leBowling.Groupe@57c44c58
+Le client n°7 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°10 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@2c80255a => 3
+Je reveille mon groupe
+Le client n°10 est sorti.
+Le client n°10 reserve une piste pour son groupe.
+Le client n°10 joue.
+Je reveille mon groupe
+Le client n°11 est sorti.
+Le client n°11 reserve une piste pour son groupe.
+Le client n°11 joue.
+Le client n°7 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°6 se voit attribuer le groupe : leBowling.Groupe@224556b7
+Le client n°6 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°1 a fini la partie.
+On attend 2clients
+Le client n°7 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@57c44c58 => 1
+Je reveille mon groupe
+Le client n°2 est sorti.
+Le client n°2 reserve une piste pour son groupe.
+Le client n°2 joue.
+Le client n°5 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°8 se voit attribuer le groupe : leBowling.Groupe@224556b7
+Le client n°8 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°12 a fini la partie.
+On attend 1clients
+Le client n°5 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@57c44c58 => 2
+Je reveille mon groupe
+Le client n°3 est sorti.
+Le client n°3 reserve une piste pour son groupe.
+Le client n°3 joue.
+Le client n°4 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°9 se voit attribuer le groupe : leBowling.Groupe@224556b7
+Le client n°9 va dans la salle des chaussures et attend que tout le monde ait des chaussures.
+Le client n°4 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@57c44c58 => 3
+Je reveille mon groupe
+Le client n°4 est sorti.
+Le client n°4 reserve une piste pour son groupe.
+Le client n°4 joue.
+Le client n°9 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°10 a fini la partie.
+On attend 2clients
+Le client n°11 a fini la partie.
+Le client n°11 demande la libération de la piste.
+Le client n°12 demande la libération de la piste.
+Le client n°12 va payer.
+Le client n°1 demande la libération de la piste.
+Le client n°1 va payer.
+Le client n°11 va payer.
+Le client n°9 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@224556b7 => 1
+Je reveille mon groupe
+Le client n°5 est sorti.
+Le client n°5 reserve une piste pour son groupe.
+Le client n°8 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°5 joue.
+Le client n°12 remet ses chaussures.
+Le client n°2 a fini la partie.
+On attend 1clients
+Le client n°8 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@224556b7 => 2
+Je reveille mon groupe
+Le client n°7 est sorti.
+Le client n°7 reserve une piste pour son groupe.
+Le client n°6 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°7 joue.
+Le client n°11 remet ses chaussures.
+Le client n°3 a fini la partie.
+Le client n°3 demande la libération de la piste.
+Le client n°10 demande la libération de la piste.
+Le client n°10 va payer.
+Le client n°2 demande la libération de la piste.
+Le client n°2 va payer.
+Le client n°3 va payer.
+Le client n°6 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Ajout d'une personne avec chaussures au groupeleBowling.Groupe@224556b7 => 3
+Je reveille mon groupe
+Le client n°6 est sorti.
+Le client n°6 reserve une piste pour son groupe.
+Le client n°6 joue.
+Le client n°1 remet ses chaussures.
+Le client n°4 a fini la partie.
+On attend 2clients
+Je reveille mon groupe
+Le client n°8 est sorti.
+Le client n°8 reserve une piste pour son groupe.
+Le client n°8 joue.
+Le client n°3 remet ses chaussures.
+Le client n°5 a fini la partie.
+On attend 1clients
+Je reveille mon groupe
+Le client n°9 est sorti.
+Le client n°9 reserve une piste pour son groupe.
+Le client n°9 joue.
+Le client n°2 remet ses chaussures.
+Le client n°7 a fini la partie.
+Le client n°7 demande la libération de la piste.
+Le client n°7 va payer.
+Le client n°5 demande la libération de la piste.
+Le client n°4 demande la libération de la piste.
+Le client n°5 va payer.
+Le client n°4 va payer.
+Le client n°10 remet ses chaussures.
+Le client n°6 a fini la partie.
+On attend 2clients
+Le client n°4 remet ses chaussures.
+Le client n°8 a fini la partie.
+On attend 1clients
+Le client n°5 remet ses chaussures.
+Le client n°9 a fini la partie.
+Le client n°9 demande la libération de la piste.
+Le client n°9 va payer.
+Le client n°8 demande la libération de la piste.
+Le client n°8 va payer.
+Le client n°6 demande la libération de la piste.
+Le client n°6 va payer.
+Le client n°7 remet ses chaussures.
+Le client n°6 remet ses chaussures.
+Le client n°8 remet ses chaussures.
+Le client n°9 remet ses chaussures.

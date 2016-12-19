@@ -1,0 +1,7 @@
+FUNC VOID main() 
+{ 
+	INT n, i
+	i:= 1
+	i:= i+1
+	PRINT "i=" , i
+}

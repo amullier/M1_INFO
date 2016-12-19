@@ -1,0 +1,5 @@
+FUNC VOID main() {
+	INT x
+	x := 1+2*3+2/3
+	PRINT x+x
+}

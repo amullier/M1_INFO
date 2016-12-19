@@ -1,0 +1,49 @@
+PROTO INT fibo(n)
+FUNC VOID main()
+{
+    INT n,i,t[11]
+    i:=0
+    PRINT "Veuillez saisir un entier n<11 :"
+    READ n
+    WHILE n-i
+    DO
+    {
+        t[i] := fibo(i)
+        i:= i+1
+    }
+    DONE
+
+
+    i:=0
+    WHILE n-i
+    DO
+    {
+        PRINT "t[", i ,"]= ", t[i],"\n"
+        i:= i+1
+    }
+    DONE
+}
+FUNC INT fibo(n)
+{
+    INT i
+    i:=(n-1)
+    IF n
+    THEN
+    {
+        IF i
+        THEN
+        {
+            RETURN fibo(n-1) + fibo(n-2)
+        }
+        ELSE
+        {
+            RETURN 1
+        }
+        FI
+    }
+    ELSE
+    {
+        RETURN 0
+    }
+    FI
+}

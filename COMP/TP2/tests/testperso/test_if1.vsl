@@ -1,0 +1,12 @@
+FUNC VOID main() 
+{ 
+	INT n, i
+	READ n
+	i:= 10
+	IF n
+	THEN 
+		PRINT "Nous sommes dans le if \n n= " , n , " \n i=" , i
+	ELSE
+		PRINT "Nous sommes dans le else \n n= " , n , " \n i=" , i
+	FI
+}

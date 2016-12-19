@@ -1,0 +1,6 @@
+FUNC VOID main() {
+	INT x,y
+	x := 3
+	y := x
+	PRINT "y vaut ",y
+	}

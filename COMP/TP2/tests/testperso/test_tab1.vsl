@@ -1,0 +1,15 @@
+FUNC VOID main() {
+	INT n,i,j, t[5]
+	n := 4
+	i:= 0
+	WHILE n
+	DO
+		{
+			t[i] := 1*6 + i-1
+			j := t[i]
+			i:= i+1
+			n:= n-1
+			PRINT i, "=>" ,t[i],"\n"
+		}
+	DONE
+}

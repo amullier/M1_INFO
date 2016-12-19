@@ -1,0 +1,252 @@
+Un client n°1 est entré dans le bowling
+Un client n°1 cherche un guichet de disponible.
+Un client n°1 est au guichet 1
+Un client n°2 est entré dans le bowling
+Un client n°2 cherche un guichet de disponible.
+Un client n°3 est entré dans le bowling
+Un client n°3 cherche un guichet de disponible.
+Un client n°4 est entré dans le bowling
+Un client n°4 cherche un guichet de disponible.
+Un client n°5 est entré dans le bowling
+Un client n°5 cherche un guichet de disponible.
+Un client n°6 est entré dans le bowling
+Un client n°6 cherche un guichet de disponible.
+Un client n°7 est entré dans le bowling
+Un client n°7 cherche un guichet de disponible.
+Un client n°8 est entré dans le bowling
+Un client n°8 cherche un guichet de disponible.
+Un client n°9 est entré dans le bowling
+Un client n°9 cherche un guichet de disponible.
+Un client n°10 est entré dans le bowling
+Un client n°10 cherche un guichet de disponible.
+Un client n°11 est entré dans le bowling
+Un client n°11 cherche un guichet de disponible.
+Un client n°12 est entré dans le bowling
+Un client n°12 cherche un guichet de disponible.
+Le client n°1 se voit attribuer le groupe : leBowling.Groupe@37e85bdf
+Un client n°2 est au guichet 2
+Un client n°1 quitte le guichet 1
+Le client n°1 va dans la salle des chaussures
+Un client n°12 est au guichet 1
+Le client n°2 se voit attribuer le groupe : leBowling.Groupe@37e85bdf
+Le client n°12 se voit attribuer le groupe : leBowling.Groupe@37e85bdf
+Un client n°11 est au guichet 3
+Le client n°11 se voit attribuer le groupe : leBowling.Groupe@44a680ae
+Un client n°11 quitte le guichet 3
+Le client n°11 va dans la salle des chaussures
+Un client n°5 est au guichet 3
+Le client n°5 se voit attribuer le groupe : leBowling.Groupe@44a680ae
+Un client n°5 quitte le guichet 3
+Le client n°5 va dans la salle des chaussures
+Un client n°10 est au guichet 3
+Un client n°12 quitte le guichet 1
+Le client n°12 va dans la salle des chaussures
+Le client n°12 est dans la salle des chaussures et attend une paire de chaussures.
+Un client n°2 quitte le guichet 2
+Un client n°7 est au guichet 2
+Un client n°9 est au guichet 1
+Le client n°2 va dans la salle des chaussures
+Le client n°10 se voit attribuer le groupe : leBowling.Groupe@44a680ae
+Le client n°12 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°2 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°7 se voit attribuer le groupe : leBowling.Groupe@5e112c0e
+Un client n°10 quitte le guichet 3
+Le client n°10 va dans la salle des chaussures
+Un client n°7 quitte le guichet 2
+Le client n°7 va dans la salle des chaussures
+Le client n°9 se voit attribuer le groupe : leBowling.Groupe@5e112c0e
+Un client n°8 est au guichet 2
+Un client n°9 quitte le guichet 1
+Le client n°9 va dans la salle des chaussures
+Un client n°6 est au guichet 1
+Le client n°2 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°5 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°11 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°1 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°8 se voit attribuer le groupe : leBowling.Groupe@5e112c0e
+Un client n°4 est au guichet 3
+Un client n°8 quitte le guichet 2
+Le client n°8 va dans la salle des chaussures
+Le client n°6 se voit attribuer le groupe : leBowling.Groupe@51972f4
+Un client n°3 est au guichet 2
+Un client n°6 quitte le guichet 1
+Le client n°6 va dans la salle des chaussures
+Le client n°1 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°1 est sorti.
+Un client n°1 est sorti de la salle des chaussures
+Le client n°1 reserve une piste pour son groupe.
+Un client n°1 attend tous les membres de son groupe avant de jouer
+Le client n°6 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°8 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°4 se voit attribuer le groupe : leBowling.Groupe@51972f4
+Un client n°4 quitte le guichet 3
+Le client n°4 va dans la salle des chaussures
+Le client n°4 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°3 se voit attribuer le groupe : leBowling.Groupe@51972f4
+Un client n°3 quitte le guichet 2
+Le client n°3 va dans la salle des chaussures
+Le client n°2 est sorti.
+Un client n°2 est sorti de la salle des chaussures
+Le client n°2 reserve une piste pour son groupe.
+Un client n°2 attend tous les membres de son groupe avant de jouer
+Le client n°9 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°7 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°10 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°12 est sorti.
+Un client n°12 est sorti de la salle des chaussures
+Le client n°12 reserve une piste pour son groupe.
+Un client n°12 attend tous les membres de son groupe avant de jouer
+Le client n°12 joue.
+Le client n°3 est dans la salle des chaussures et attend une paire de chaussures.
+Le client n°2 joue.
+Le client n°1 joue.
+Le client n°12 a fini la partie.
+Le client n°12 va libérer la piste.
+Le client n°2 a fini la partie.
+Le client n°2 va libérer la piste.
+Le client n°12 attend d'avoir un guichet pour payer.
+Le client n°2 attend d'avoir un guichet pour payer.
+Un client n°2 est au guichet 2
+Le client n°1 a fini la partie.
+Le client n°1 va libérer la piste.
+Le client n°1 attend d'avoir un guichet pour payer.
+Un client n°12 est au guichet 1
+Un client n°1 est au guichet 3
+Un client n°12 libere le guichet 1
+Un client n°2 libere le guichet 2
+Le client nÂ°2 remet ses chaussures.
+Le client nÂ°12 remet ses chaussures.
+Un client n°1 libere le guichet 3
+Le client nÂ°1 remet ses chaussures.
+Un client n°2 sort du bowling.
+Le client n°10 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Un client n°1 sort du bowling.
+Un client n°12 sort du bowling.
+Le client n°5 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°11 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°11 est sorti.
+Un client n°11 est sorti de la salle des chaussures
+Le client n°11 reserve une piste pour son groupe.
+Un client n°11 attend tous les membres de son groupe avant de jouer
+Le client n°10 est sorti.
+Un client n°10 est sorti de la salle des chaussures
+Le client n°10 reserve une piste pour son groupe.
+Un client n°10 attend tous les membres de son groupe avant de jouer
+Le client n°5 est sorti.
+Un client n°5 est sorti de la salle des chaussures
+Le client n°5 reserve une piste pour son groupe.
+Un client n°5 attend tous les membres de son groupe avant de jouer
+Le client n°5 joue.
+Le client n°10 joue.
+Le client n°11 joue.
+Le client n°10 a fini la partie.
+Le client n°10 va libérer la piste.
+Le client n°5 a fini la partie.
+Le client n°5 va libérer la piste.
+Le client n°5 attend d'avoir un guichet pour payer.
+Un client n°5 est au guichet 1
+Le client n°11 a fini la partie.
+Le client n°11 va libérer la piste.
+Le client n°11 attend d'avoir un guichet pour payer.
+Le client n°10 attend d'avoir un guichet pour payer.
+Un client n°11 est au guichet 2
+Un client n°10 est au guichet 1
+Un client n°5 libere le guichet 1
+Le client nÂ°5 remet ses chaussures.
+Un client n°11 libere le guichet 2
+Le client nÂ°11 remet ses chaussures.
+Un client n°5 sort du bowling.
+Un client n°10 libere le guichet 1
+Le client nÂ°10 remet ses chaussures.
+Le client n°7 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Un client n°10 sort du bowling.
+Un client n°11 sort du bowling.
+Le client n°8 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°9 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°9 est sorti.
+Un client n°9 est sorti de la salle des chaussures
+Le client n°7 est sorti.
+Le client n°9 reserve une piste pour son groupe.
+Un client n°7 est sorti de la salle des chaussures
+Le client n°7 reserve une piste pour son groupe.
+Un client n°9 attend tous les membres de son groupe avant de jouer
+Un client n°7 attend tous les membres de son groupe avant de jouer
+Le client n°8 est sorti.
+Un client n°8 est sorti de la salle des chaussures
+Le client n°8 reserve une piste pour son groupe.
+Un client n°8 attend tous les membres de son groupe avant de jouer
+Le client n°8 joue.
+Le client n°7 joue.
+Le client n°9 joue.
+Le client n°8 a fini la partie.
+Le client n°8 va libérer la piste.
+Le client n°9 a fini la partie.
+Le client n°9 va libérer la piste.
+Le client n°9 attend d'avoir un guichet pour payer.
+Un client n°9 est au guichet 1
+Le client n°7 a fini la partie.
+Le client n°7 va libérer la piste.
+Le client n°8 attend d'avoir un guichet pour payer.
+Le client n°7 attend d'avoir un guichet pour payer.
+Un client n°8 est au guichet 2
+Un client n°7 est au guichet 1
+Un client n°9 libere le guichet 1
+Le client nÂ°9 remet ses chaussures.
+Un client n°8 libere le guichet 2
+Le client nÂ°8 remet ses chaussures.
+Un client n°7 libere le guichet 1
+Le client nÂ°7 remet ses chaussures.
+Un client n°9 sort du bowling.
+Le client n°6 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Un client n°7 sort du bowling.
+Un client n°8 sort du bowling.
+Le client n°4 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°3 est dans la salle des chaussures et a une paire de chaussures.
+Attente de son groupe pour sortir
+Le client n°3 est sorti.
+Un client n°3 est sorti de la salle des chaussures
+Le client n°6 est sorti.
+Un client n°6 est sorti de la salle des chaussures
+Le client n°4 est sorti.
+Un client n°4 est sorti de la salle des chaussures
+Le client n°4 reserve une piste pour son groupe.
+Le client n°3 reserve une piste pour son groupe.
+Un client n°4 attend tous les membres de son groupe avant de jouer
+Le client n°6 reserve une piste pour son groupe.
+Un client n°3 attend tous les membres de son groupe avant de jouer
+Un client n°6 attend tous les membres de son groupe avant de jouer
+Le client n°6 joue.
+Le client n°4 joue.
+Le client n°3 joue.
+Le client n°6 a fini la partie.
+Le client n°6 va libérer la piste.
+Le client n°6 attend d'avoir un guichet pour payer.
+Le client n°3 a fini la partie.
+Le client n°3 va libérer la piste.
+Le client n°3 attend d'avoir un guichet pour payer.
+Un client n°3 est au guichet 2
+Le client n°4 a fini la partie.
+Le client n°4 va libérer la piste.
+Le client n°4 attend d'avoir un guichet pour payer.
+Un client n°6 est au guichet 1
+Un client n°3 libere le guichet 2
+Le client nÂ°3 remet ses chaussures.
+Un client n°6 libere le guichet 1
+Le client nÂ°6 remet ses chaussures.
+Un client n°4 est au guichet 3
+Un client n°3 sort du bowling.
+Un client n°4 libere le guichet 3
+Le client nÂ°4 remet ses chaussures.
+Un client n°6 sort du bowling.
+Un client n°4 sort du bowling.

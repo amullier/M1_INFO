@@ -1,0 +1,100 @@
+Q1.
+E 	-> max ( E LAM )
+
+LAM -> ',' E LAM
+		| //Mot vide
+
+
+Q2.
+TOKENS={MAX}
+
+E : max( e1=E]  LAM) 	-> ^(MAX e1 LAM?)
+
+LAM -> ',' E LAM		-> E LAM?
+		| //Mot vide
+
+
+Q3.
+
+E[ts] : 
+	max( E1[ts]  LAM[ ts , max_place ] )
+	{
+		max_place = NouvVar();
+		E.code = E1.code @@ (=, max_place , E1.place , _ ) @@ LAM.code ;
+		E.place = max_place;
+	}
+; 
+
+LAM[ ts , max_place ]:
+	
+	',' E[ts] LAM[ts, max_place]
+	{
+		label_suite = NouvLabel();
+		resultat = NouvVar();
+		LAM.code = E.code @@ (>=, resultat , max_place, E.place) @@
+						(ifnz label_suite, resultat, _ , _ )@@
+						(=, max_place, E.place, _ )@@
+						(label label_suite, _ , _ , _ )
+	}
+	| //Mot vide
+;
+
+Exemple : 
+
+		max(3+2, x+2, 11)
+
+		(+, t0, 3, 2)
+		(=, max_place, t0, _ )
+
+		(+, t1, x, 2)
+		(>=, res1, max_place, t1)
+		(ifnz label_suite1, res1, _ , _ )
+		(=, max_place, t1, _ )
+		(label label_suite1, _ , _ , _ )
+
+		(const 11, t2, _ , _ )
+		(>=, res2, max_place, t2)
+		(ifnz label_suite2, res2, _ , _ )
+		(=, max_place, t2, _ )
+		(label label_suite2, _ , _ , _ )
+
+Q4.
+
+E 	-> argmax ( E LAM_indice )
+
+LAM_indice 	-> ',' E LAM_indice
+				| //Mot vide
+
+
+E[ts] : 
+	max( E1[ts]  LAM_indice[ ts , max_place , indice_place , indice_max_place] )
+	{
+		max_place 		= NouvVar();
+		indice_place 	= NouvVar();
+		indice_max_place= NouvVar();
+		E.code = E1.code @@ (=, indice_place , 0, _ )@@ (=, indice_max_place , 0, _ )
+				@@ (=, max_place , E.place, _ ) @@ LAM_indice.code ;
+		E.place = indice_max_place;
+	}
+; 
+
+
+LAM_indice[ ts , max_place , indice_place]:
+	
+	',' E[ts] LAM_indice[ts, max_place , indice_place]
+	{
+		label_suite = NouvLabel();
+		resultat = NouvVar();
+		temp_indice = NouvVar();
+		LAM_indice.code = E.code @@ (>=, resultat , max_place, E.place) @@
+						(=, temp_indice, indice_place, _ )@@
+						(+, indice_place, temp_indice, 1 )@@
+
+						(ifnz label_suite, resultat, _ , _ )@@
+						(=, max_place, E.place, _ )@@						
+						(=, indice_max_place, indice_place, _ )@@
+												
+						(label label_suite, _ , _ , _ )
+	}
+	| //Mot vide
+;

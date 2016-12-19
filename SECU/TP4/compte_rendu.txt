@@ -1,0 +1,214 @@
++-----------------------------------------------------------+
+| TP4 SECU                                  Mullier Antoine |
++-----------------------------------------------------------+
+
+Exercice 1
+On considère un fichier "message" dans lequel est stocké la 
+donnée à traiter
+
+1.
+SHA-1 :
+openssl  dgst -sha1 message > message.sha1
+
+RIPE-MD160 :
+openssl  dgst -ripemd160 message > message.ripemd160
+
+MD5 :
+openssl  dgst -md5 message > message.md5
+
+====
+
+2.
+md5sum message > message.md5sum
+
+====
+
+3.
+BLOWFISH :
+openssl enc -bf -in message -out message.blowfish
+
+3DES : 
+openssl enc -des-ede3-cfb -in message -out message.3des
+
+CAST5 :
+openssl enc -cast5-cfb -in message -out message.cast5
+
+====
+
+4.
+Hachage du message original avec SHA-256:
+openssl dgst -sha256 message >  message.sha256
+
+Déchiffrage BLOWFISH :
+openssl enc -d -bf -in message.blowfish -out message_bf.dec
+
+Déchiffrage 3DES : 
+openssl enc -d -des-ede3-cfb -in message.3des -out message_3des.dec
+
+Déchiffrage CAST5 :
+openssl enc -d -cast5-cfb -in message.cast5 -out message_cast5.dec
+
+En comparant les hachés avec la commande 5.1 (SHA-256) on
+retrouve les mêmes messages
+
+====
+
+5.
+On considère l'image image.jpg téléchargée sur internet
+
+Chiffrement avec AES :
+openssl enc -aes-256-cfb -in image.jpg -out image.aes
+
+====
+
+6.
+Génération de clé RSA de taille 2048 :
+openssl genrsa -out rsa.out 2048
+
+On récupère la clé publique:
+openssl rsa -in rsa.out -pubout -out rsa.pub
+
+====
+
+7.
+On stocke la clé publique de l'autre binôme dans le fichier
+rsa2.pub
+
+====
+
+8.
+echo "cle_utilisee" | openssl rsautl -encrypt -inkey -pubin rsa2.pub -out key.rsacrypt
+
+====
+
+9.
+On déchiffre le message reçu avec notre clé privée:
+openssl rsautl -decrypt -inkey rsa.out -in key.rsacrypt -out key
+
+Une fois la clé AES déchiffrée on déchiffre :
+openssl enc -d -aes-256-cfb -in image.aes -out image_aes.jpg
+
+On saisira la clé déchiffrée quand openssl le demandera
+
+============================================================
+
+Exercice 2
+
+1. 
+On a 3 certificats présent pour https://www.google.fr
+
+====
+2. 
+GeoTrust Global CA
+
+====
+3. 
+Pas de suite cryptographique trouvée avec Firefox
+
+====
+4. 
+SHA-256
+
+====
+5. 
+ANSI X9.62 elliptic curve prime256v1 (aussi appelé secp256r1, NIST P-256)
+
+====
+6. 
+Pas d'autres algorithmes trouvés
+
+====
+7.1 
+On a 3 certificats   
+
+====
+7.2 
+VeriSign Universal Root Certification Authority
+
+====
+7.3 
+Pas de suite cryptographique trouvée avec Firefox
+
+====
+7.4 
+SHA-256
+
+====
+7.5 
+Chiffrement PKCS #1 RSA
+
+====
+7.6
+Pas d'autres algorithmes trouvés
+
+====
+8.1 
+3 certificats
+
+====
+8.2 
+VeriSign Class 3 Public Primary Certification Authority - G5
+
+====
+8.3 
+Pas de suite cryptographique trouvée avec Firefox
+
+====
+8.4 
+SHA-256
+
+====
+8.5 
+Chiffrement PKCS #1 RSA
+
+====
+8.6
+Pas d'autres algorithmes trouvés
+
+====
+9.
+openssl speed aes-256-cbc
+type             16 bytes     64 bytes    256 bytes   1024 bytes   8192 bytes
+aes-256 cbc      73368.55k    79033.94k    81155.24k    81636.01k    81813.50k
+
+openssl speed sha256
+type             16 bytes     64 bytes    256 bytes   1024 bytes   8192 bytes
+sha256           55368.03k   124113.24k   237461.85k   300979.20k   331390.98k
+
+------------------------------------------------------------
+
+openssl speed ecdsap256
+                              sign    verify    sign/s verify/s
+ 256 bit ecdsa (nistp256)   0.0001s   0.0001s  19261.4   7703.3
+
+
+openssl speed rsa
+
+                  sign    verify    sign/s verify/s
+rsa  512 bits 0.000061s 0.000005s  16419.9 221256.1
+rsa 1024 bits 0.000175s 0.000011s   5718.6  89222.5
+rsa 2048 bits 0.000805s 0.000035s   1242.4  28471.2
+rsa 4096 bits 0.008985s 0.000132s    111.3   7565.2
+
+
+============================================================
+
+Exercice 3:
+
+1.
+Génération des clés:
+	openssl genrsa -out Keys.pem 2048
+Vérification:
+  	openssl rsa -in rsa.out -text -noout
+
+====
+2.
+Exportation de la clé publique dans PKey.pem
+  	openssl rsa -in Keys.pem -pubout -out PKey.pem
+
+====
+11.
+Il faut utiliser sa clé privée : private/privkey.pem
+
+====
+13. Le fichier  serial contient un entier qui s'incrémente en fonction du nombre de génération de certificats

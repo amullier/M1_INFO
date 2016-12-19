@@ -1,0 +1,11 @@
+<poly> <version>
+	[ <annee> "2007" ;
+	  <nbpages> "147" ],
+	[ <annee> "2011" ;
+	  <nbpages> "163" ] .
+
+<ue> <version>
+	[ <annee> "2007" ;
+	  <enseignant> "Ferre" ],
+	[ <annee> "2008" ;
+	  <enseignant> "Plouzeau" ] .

@@ -1,0 +1,70 @@
+------------------------------------------------------------
+ TP5 SECU									Antoine Mullier
+------------------------------------------------------------
+
+Exercice 2
+1.
+On a booté sur un live CD (Kali linux) afin d'avoir un accès 
+administrateur pour obtenir le controle sur les fichiers 
+habituellement protégés (shadow et passwd).
+On a ensuite utilisé john the ripper pour décrypter le mot de
+passe de la session root à partir de shadow et passwd 
+Résulat : 123456789
+
+John the ripper utilise son dictionnaire en priorité et si 
+cela ne suffit pas il passe en brute force.
+En choississant un mot de passe peu commun avec des caractères
+spéciaux, majuscules, minuscules (par exemple : "C/45+m!@~aJ") 
+john the ripper devrait mettre beaucoup de temps à le 
+décrypter car il ne devrait pas être dans son dictionnaire. 
+
+En estimant que john the ripper prenne 2 ans à le décrypter 
+on conviendra que changer son mot de passe tous les ans est sûr.
+
+2.
+Numeric SQL injection:
+
+La requete était de la forme :
+SELECT * FROM users WHERE login=101
+
+Comme on voulait obtenir l'affichage pour tous les différents 
+logins il fallait que la condition duWHERE soit vraie tout
+le temps.
+
+On a donc changer la requête comme ceci :
+SELECT * FROM users WHERE login=101 OR 1=1
+
+Et on a bien " login=101 OR 1=1 " qui rend toujours vrai.
+
+String SQL injection:
+
+La requete était de la forme :
+SELECT * FROM users WHERE login=101 AND password='mon_password'
+
+Mais password='mon_password' était faux puisqu'on ne le 
+connaissait pas. En rajoutant, une condition toujours vraie on 
+s'assure d'avoir une requete qui rende un résultat
+
+SELECT * FROM users WHERE login=101 AND password='mon_password' OR 1=1'
+
+Authentification flaws
+
+On nous demandait le nombre TAC2 alors qu'on connaissait seulement
+TAC1 dans le formulaire on avait une variable nous donnant le nombre
+du champ demandé. En le passant à 1 on pouvait remettre le champ 
+que l'on connaissait déjà.
+
+
+XSS attack
+Nous avons éditer le profil de Tom en ajoutant un petit script JS 
+affichant une pop-up avec la fonction alert().
+
+En insérant "<script>alert("Alerte !");</script>" on remarque que 
+lors de l'affichage écran du profil (quelque soit l'utilisateur)
+la pop-up apparaît.
+
+Insecure communication
+Le mot de passe affiché dans le champ HTML correspond au code source:
+<input value="sniffy" type="password"></input>
+
+On a donc le mot de passe en clair "sniffy"

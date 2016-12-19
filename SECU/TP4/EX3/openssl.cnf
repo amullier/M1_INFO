@@ -1,0 +1,41 @@
+[ ca ]
+default_ca = exampleCA
+
+[ exampleCA ]
+dir = .
+certificate = $dir/cacert.pem
+database = $dir/index.txt
+serial = $dir/serial
+new_certs_dir = $dir/certs
+private_key = $dir/private/privkey.pem
+
+default_days = 365
+default_crl_days = 7
+default_md = md5
+policy = exampleca_policy
+x509_extensions = certificate_extensions
+
+[ exampleca_policy ]
+commonName = ExampleCA
+countryName = FR
+organizationName = CA for IntroToSecurity
+
+[ certificate_extensions ]
+basicConstraints = CA:false
+
+[ req ]
+default_bits = 2048
+default_keyfile = ./private/privkey.pem
+default_md = sha1
+prompt = no
+distinguished_name = root_ca_distinguished_name
+x509_extensions = root_ca_extensions
+
+[ root_ca_distinguished_name ]
+commonName = YourName CA
+countryName = FR
+emailAddress = youremail
+organizationName = CA for IntroToSecurity
+
+[ root_ca_extensions ]
+basicConstraints = CA:true
