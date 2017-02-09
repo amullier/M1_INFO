@@ -1,0 +1,115 @@
+(*
+    TD4 - Invariant de boucles
+*)
+module TD4
+(* Exercice 1 *)
+    use import int.Int
+    use import ref.Ref
+    use import ref.Refint
+    use import array.Array
+    use import array.ArrayPermut
+    use import array.ArraySwap
+    
+    type couleur = Bleu | Blanc | Rouge
+    
+    predicate mono(t : array couleur)(i j : int) (c : couleur) = 
+        forall k. 0<=i < j <= t.length -> t[k] = c
+        
+    let drapeau (t:array couleur) = 
+        ensures {exists i j.
+                    mono t 0 i Bleu
+                /\  mono t i j Blanc
+                /\  mono t j t.length Rouge
+                /\  permut_all (old t) t }
+        'Init:
+        let nb = ref 0 in
+        let cur = ref 0 in
+        let pr = ref t.length in
+        while(!cur < !pr)do
+            variant{!pr - !cur}
+            invariant{
+                    0<= !nb <= !cur <= !pr <= t.length
+                /\  mono t 0 !nb Bleu
+                /\  mono t !nb !cur Blanc
+                /\  mono t !pr t.length Rouge
+                /\  permut_all (at t 'Init) t
+            }
+            match t[!cur] with
+                | Bleu  -> swap t !nb !cur; incr nb; incr cur
+                | Blanc -> incr cur
+                | Rouge -> decr pr ; swap t !cur !pr
+            end
+        done
+        
+        
+    (* Exercice 2 *)
+    (*1. *)
+    let partition (t : array int) v i j : (int, int) = 
+        requires{ 0<= i < j <= t.length }
+        ensures { 
+            let res1,res2 = result in
+            let v = (old t)[i] in
+                i <= res1 < res2 <= j
+            /\  forall x. i<= x < res1 -> t[x] < v
+            /\  forall x. i<= res1 <= x < res2 -> t[x] < v
+            /\  forall x. i<= res2 <= x < j -> t[x] < v
+            /\  permut_sub (old t) t i j
+        }
+        
+        'Init:
+        let res1 = ref i in 
+        let res2 = ref j in
+        let cur = ref (i+1) in 
+        while (!cur < !res2) do
+            variant{!res2 - !cur}
+            invariant {i <= !res1 < !cur <= !res2 <= j}
+            invariant {forall x. i<= x < !res1 -> t[x] < v}
+            invariant {forall x. i<= !res1 <= x < !cur -> t[x] < v}
+            invariant {forall x. i<= !res2 <= x < j -> t[x] < v}
+            invariant {permut_sub (at t 'Init) t i j}
+            
+            'Loop:
+            let cv = ref t[!cur] in 
+            if !cv < v then 
+            begin 
+                swap t !res1 !cur; 
+                assert{permut_sub (at t 'Loop) t i j};
+                incr res1; 
+                incr cur  
+            end
+            else if !cv = v then 
+                incr cur
+            else 
+            begin 
+                decr res2; 
+                swap t !cur !res2;
+                assert{permut_sub (at t 'Loop) t i j}
+            end
+        done;
+        (!res1,!res2)
+    
+    (*2. *)
+    let rec quicksort (t :array int) i j =
+        requires{ 0 <= i <= j <= t.length }
+        ensures { permut_sub (old t) t i j }
+        variant { j - i }
+        if (i < j) then
+        begin
+            'Q1:
+            let res1,res2 = partition t t[i] i j in
+            assert{ permut (at t 'Q1) t i j };
+            assert{ forall k l. i <= k < res2 -> res1 <= l < j -> t[k] <= t[l] };
+            'Q2:
+            quicksort t i res1;
+            assert{ permut (at t 'Q2) t i j };
+            'Q3:
+            quicksort t res2 j;
+            assert{ permut (at t 'Q3) t i j }
+        end
+        
+    
+    
+    
+    
+    
+end
