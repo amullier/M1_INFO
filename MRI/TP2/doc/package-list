@@ -1,0 +1,7 @@
+mri.socket.address
+mri.socket.tcp.charset
+mri.socket.tcp.chat
+mri.socket.tcp.echo
+mri.socket.tcp.nom
+mri.socket.tcp.thread
+mri.socket.udp
