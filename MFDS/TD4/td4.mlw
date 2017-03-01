@@ -92,15 +92,16 @@ module TD4
     let rec quicksort (t :array int) i j =
         requires{ 0 <= i <= j <= t.length }
         ensures { permut_sub (old t) t i j }
+        ensures {  forall k l. i <= k <= l < j -> t[k] <= t[l] }
         variant { j - i }
         if (i < j) then
         begin
-            'Q1:
+            'Init:
             let res1,res2 = partition t t[i] i j in
-            assert{ permut (at t 'Q1) t i j };
-            assert{ forall k l. i <= k < res2 -> res1 <= l < j -> t[k] <= t[l] };
+            assert{ permut (at t 'Init) t i j };
             'Q2:
             quicksort t i res1;
+            assert{ forall k l. i <= k < res2 -> res1 <= l < j -> t[k] <= t[l] };
             assert{ permut (at t 'Q2) t i j };
             'Q3:
             quicksort t res2 j;
@@ -108,8 +109,24 @@ module TD4
         end
         
     
-    
-    
-    
-    
+    let rec find (a: array int) (m n k:int) : unit = 
+        requires{ 0<= m <= k < n <= a.length }
+        requires{ forall l. 0<= l <= m -> a[m] -> a[l] < a[m]}
+        ensures{ forall i. 0<= i <= k -> a[i] <= a[k]}
+        ensures{ forall i. k <= i < a.length -> a[k] <= a[i]}
+        ensures{ permut_sub (old a) a m n}
+        variant{ n - m }
+        let (i,j) = partition a m n in
+        'F:
+        if k< i then 
+        begin
+            find a m i k;
+            assert{ permut_sub (at a 'F) a m n }
+        end
+        else if j <=k then 
+        begin
+            find a j n k;
+            assert { permut_sub (at a 'F) a m n}
+        end
+
 end
