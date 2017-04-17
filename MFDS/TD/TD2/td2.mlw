@@ -1,0 +1,58 @@
+(*
+ TD2 : Premiers programmes en Why3
+*)
+module TD2
+    use import int.Int
+    use import ref.Ref
+    use import array.Array
+    
+    constant b : array int 
+    constant j : int
+    constant k : int
+    
+    (*Axiome de l'énoncé*)
+    axiom R1 : 0<=j<k<length b
+    
+(* Exercice 1 *)
+    predicate p1 = forall i : int. (j<=i<=k)->(b[i]=0)
+    
+    predicate p2 = forall i : int. (0<=i<(length b)) -> 
+                                        (b[i]=0 -> (j<=i<=k))
+    
+    predicate p3 = not p2
+    
+    predicate p4 = forall i:int.(0<=i<(length b))
+                            /\ (b[i] = 0)
+                            /\ ((j>i)\/(i>k))
+    
+    predicate p5 = exists i1 i2:int.
+                        (0<=i1<i2<(length b))
+                        /\ b[i1]=0 /\ b[i2]=0
+               
+    predicate p6 = exists i1 i2:int.
+                        (0<=i1<i2<(length b))
+                        /\ b[i1]=0 /\ b[i2]=0
+                        /\ (forall i:int.
+                                (0<=i<(length b)) ->
+                                (b[i]=0) -> (i=i1)\/(i=i2))
+                                
+    predicate p7 = exists i1 i2 :int.
+                    0<=i1<i2<(length b)
+                    /\(forall i:int.
+                            (0<=i<(length b)) -> 
+                            (b[i]=0) -> (i=i1)\/(i=i2))
+    
+    val reverse (t: array int)  : array int
+        ensures{
+            forall i:int. (0<=i<(length t)) ->
+                (t[i] = result[(length t)-i-1]
+                /\t[i]= (old t)[i])
+        }
+
+(* Exercice 2 *)
+    function fact int : int
+    
+    axiom fact_zero : fact 0 = 1
+    axiom fact_succ : forall a:int.0<a -> fact a = a*(fact a-1)
+
+end

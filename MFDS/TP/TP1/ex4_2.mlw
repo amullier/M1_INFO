@@ -1,0 +1,35 @@
+(*
+	TP1 : Exercice 4.2
+*)
+theory Exercice4
+
+	predicate applebee_ment
+	predicate beatle_ment
+	predicate casey_ment
+	predicate doodle_ment
+	predicate eastwood_ment
+
+	axiom P6 : (not (applebee_ment) /\ beatle_ment  /\ casey_ment /\ doodle_ment /\ eastwood_ment) 
+	\/ (applebee_ment /\ not(beatle_ment)  /\ casey_ment /\ doodle_ment /\ eastwood_ment)
+	\/ (applebee_ment /\ beatle_ment  /\ not(casey_ment) /\ doodle_ment /\ eastwood_ment)
+	\/ (applebee_ment /\ beatle_ment  /\ casey_ment /\ not(doodle_ment) /\ eastwood_ment)
+	\/ (applebee_ment /\ beatle_ment  /\ casey_ment /\ doodle_ment /\ not(eastwood_ment))
+
+	axiom P1 : applebee_ment -> applebee_ment
+
+	axiom P2 : beatle_ment -> doodle_ment
+
+	axiom P3 : casey_ment -> not(casey_ment)
+
+	axiom P4 : doodle_ment -> beatle_ment
+
+	axiom P5 : eastwood_ment -> eastwood_ment
+	
+
+	goal R1 :   applebee_ment
+	goal R2 :   beatle_ment
+	goal R3 :   not  casey_ment (* le menteur *)
+	goal R4 :   doodle_ment
+	goal R5 :   eastwood_ment
+
+end	

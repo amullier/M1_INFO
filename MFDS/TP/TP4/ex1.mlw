@@ -1,0 +1,30 @@
+(*
+  TP4 - Exercice 1
+*)
+module Termine
+
+  use import int.Int
+  use import ref.Ref
+
+  let f1 () =
+    ensures { result = 100 }
+    let n = ref 0 in
+    while !n < 100  do
+      invariant { 0<= !n <= 100 }
+      variant{ 100 - !n }
+      n := !n + 1
+    done;
+    !n
+
+  let f2 () =
+    ensures { result = 0 }
+    let n = ref 100 in
+    while !n > 0  do
+      invariant { 0<= !n <= 100 }
+      variant{ !n }
+      n := !n - 1
+    done;
+    !n
+
+end
+

@@ -1,0 +1,64 @@
+(*
+    TP5 : Partie 1
+*)
+module Ex2Kadane
+
+  use import int.Int
+  use import ref.Refint
+  use export array.Array
+
+  use export array.ArraySum
+  (* provides [sum a l h] = the sum of a[l..h[ and suitable lemmas *)
+
+(*
+    [| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |]
+     ......|###### smax #######|..............
+     ............................. |## maxcur ##
+*)
+
+  let soustab_max (a: array int): int = a.length
+     (* a compléter *)
+
+end
+
+module Test
+
+  use import int.Int
+  use import Ex2Kadane
+
+  let test_case () =
+    let n = 9 in
+    let a = make n 0 in
+    a[0] <- -2;
+    a[1] <- 1;
+    a[2] <- -3;
+    a[3] <- 4;
+    a[4] <- -1;
+    a[5] <- 2;
+    a[6] <- 1;
+    a[7] <- -5;
+    a[8] <- 4;
+    let s = soustab_max a in assert { s = 6 } 
+  
+end
+
+module Ex2Naif
+
+  use import int.Int
+  use import ref.Refint
+
+  use export array.ArraySum
+  (* provides [sum a l h] = the sum of a[l..h[ and suitable lemmas *)
+
+  (* s is no smaller than sums of subarrays a[l..h[ with 0 <= l < maxlo *)
+  predicate maxsublo (a: array int) (maxlo: int) (s: int) =
+   (* à compléter *)
+
+  (* s is no smaller than sums of subarrays of a *)
+  predicate maxsub (a: array int) (s: int) =
+   (* à compléter *)
+
+  let soustab_max_naif (a: array int): int
+     (* a compléter *)
+
+end

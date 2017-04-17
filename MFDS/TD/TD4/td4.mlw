@@ -12,9 +12,11 @@ module TD4
     
     type couleur = Bleu | Blanc | Rouge
     
+
     predicate mono(t : array couleur)(i j : int) (c : couleur) = 
         forall k. 0<=i < j <= t.length -> t[k] = c
         
+
     let drapeau (t:array couleur) = 
         ensures {exists i j.
                     mono t 0 i Bleu
@@ -40,8 +42,9 @@ module TD4
                 | Rouge -> decr pr ; swap t !cur !pr
             end
         done
-        
-        
+
+       
+
     (* Exercice 2 *)
     (*1. *)
     let partition (t : array int) v i j : (int, int) = 
@@ -87,6 +90,7 @@ module TD4
             end
         done;
         (!res1,!res2)
+
     
     (*2. *)
     let rec quicksort (t :array int) i j =

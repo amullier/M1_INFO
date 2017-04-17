@@ -1,0 +1,53 @@
+(*
+  TP4 - Exercice 3
+*)
+module Ex3
+
+  use import int.Int
+  use import ref.Refint
+
+  function division_fun (a b : int) : int
+    axiom zero_division : forall x : int. division_fun 0 x = 0 /\ x<>0
+    axiom one_division : forall x : int. division_fun x 1 = x
+    axiom same_division : forall x : int. division_fun x x = 1 /\ x<>0
+    axiom xy_division : forall x,y : int. division_fun (x*y) x = y /\ x<>0
+    axiom inf_div :  forall x,y : int. x < y /\ division_fun x y = 0 
+    axiom the_division : forall x,y : int. exists r, q : int. y=(x*q) + r /\ (y>r) /\ (q = (division_fun x y))
+
+
+  let division (a b: int) : int = 
+      requires {b>0 /\ a >=0}
+      ensures {result = (division_fun a b)}
+      let q = ref 0 in 
+      let r = ref a in 
+      while (!r > b) do
+        invariant{ a = !q*b + !r }
+        variant{ !r }
+        r := (!r - b);
+        q := (!q + 1);
+      done;
+      !q
+      
+    let rec division_rec(a b : int) : int = 
+        variant{a}
+        requires {b>0 /\ a >=0}
+        ensures {result = (division_fun a b)}
+        if(a<b) then
+            0
+        else 
+            (division_rec (a-b) b) + 1
+        
+end
+
+module MesTests
+
+  use import int.Int
+  use import Ex3
+  
+  let mon_test () =
+      let x = 2 in
+      let y = 1 in
+      let res = division x y  in
+      assert{res = 2}
+ 
+end

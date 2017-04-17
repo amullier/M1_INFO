@@ -1,0 +1,66 @@
+(*
+ TD1 : Modélisation dans le langage logique de Why3
+*)
+module TD1
+    use import int.Int
+    use import list.List
+    use import list.Append
+    use import list.Length
+
+(* Exercice 1 : nombres *)
+    predicate pair(x: int) = exists p:int. x= 2*p
+    predicate impair(x: int) = exists p:int. x= 2*p+1
+    
+    goal G1 : forall x:int. pair(x)\/impair(x)
+    goal G2 : forall x:int. pair(x) -> not impair(x)
+    goal G3 : forall x:int. pair(x) -> impair( x+1 )
+    goal G4 : forall x:int. (pair(x) <-> pair(x+2))/\(impair(x)<->impair(x+2))
+    goal G5 : forall x:int.pair(2*x)
+    
+    predicate divise(d n:int) = exists q:int. n = q*d
+    
+    lemma l1 : forall x:int. divise 1 x
+    lemma l2 : forall x:int. divise x 0 
+    lemma l3 : forall x:int. divise x x
+    lemma l4 : forall x n:int. divise x (n*x)
+    
+    predicate premier(x:int) = forall n:int.(divise n x)->((n=1)\/(n=x))
+    
+    goal G6 : forall n d:int.
+                ((divise d n) 
+                /\ (forall d_plus :int. 
+                        (divise d_plus n) -> ((d_plus >= d)/\(d>=1))
+                    )
+                )
+                -> premier(d)
+                
+(* Exercice 2 : listes *)
+    function renverser (l: list 'a) : list 'a = 
+        match l with
+        | Nil      -> Nil
+        | Cons x r -> renverser r ++ Cons x Nil
+    end
+    
+    lemma idempotence : forall l :list 'a. (renverser (renverser l)) = l
+    
+    lemma longueurListe : forall l :list 'a. length l = (length (renverser l))
+    
+    lemma renverseConcat : forall l1 l2 :list 'a. 
+            ((renverser l2)++(renverser l1))=(renverser (l1++l2))
+            
+    function noccur(e :'a)(l : list 'a) : int =
+        match l with
+        | Nil -> 0
+        | Cons a r -> if(a=e)
+                        then 1+(noccur e r)
+                        else (noccur e r)
+    end
+            
+    predicate estPermutation(l1 l2 : list 'a) =
+        forall x:'a.(noccur x l1)=(noccur x l2)
+        
+    lemma permut1 : forall l : list 'a. estPermutation l l
+    lemma permut2 : forall l1 l2 : list 'a. 
+                    (estPermutation l1 l2) -> ((length l1)=(length l2))   
+        
+end

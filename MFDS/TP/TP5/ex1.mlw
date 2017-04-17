@@ -1,0 +1,222 @@
+(* 
+    TP5 : Partie 1
+*)
+
+module RingBuffer
+
+  use import int.Int
+  use import ref.Ref
+  use import option.Option
+  use import list.List
+  use import list.NthLengthAppend as L
+  use import array.Array
+
+  type buffer 'a = {
+    mutable first: int;
+    mutable len  : int;
+            data : array 'a;
+    ghost mutable sequence: list 'a;
+  }
+  invariant {
+    let size = Array.length self.data in
+    0 <= self.first <  size /\
+    0 <= self.len   <= size /\
+    self.len = L.length self.sequence /\
+    forall i: int. 0 <= i < self.len ->
+      (self.first + i < size ->
+         nth i self.sequence = Some self.data[self.first + i]) /\
+      (0 <= self.first + i - size ->
+         nth i self.sequence = Some self.data[self.first + i - size])
+  }
+
+  let create (n: int) (dummy: 'a) : buffer 'a =
+    requires { n > 0 }
+    ensures  { length result.data = n }
+    ensures  { result.sequence = Nil }
+    let myarray =  (Array.make n dummy) in
+      { first = 0 ; len = 0 ; data = myarray ; sequence = Nil}
+
+
+  let length (b: buffer 'a) : int
+    ensures { result = b.len }
+  = b.len
+
+  let clear (b: buffer 'a) : unit
+    writes  { b.len, b.sequence }
+    ensures { b.len = 0 }
+    ensures { b.sequence = Nil }
+    =b.len <- 0 ; b.sequence <- Nil 
+
+  let push (b: buffer 'a) (x: 'a) : unit
+    requires { b.len < length b.data }
+    writes   { b.data.elts, b.len, b.sequence }
+    ensures  { b.len = (old b.len) + 1 }
+    ensures  { b.sequence = (old b.sequence) ++ Cons x Nil }
+   =  ghost b.sequence <- b.sequence ++ Cons x Nil;
+    let i = b.first + b.len in
+    let n = Array.length b.data in
+    b.data[if i >= n then i - n else i] <- x;
+    b.len <- b.len + 1
+
+  let head (b: buffer 'a) : 'a
+    requires { b.len > 0 }
+    ensures  { match b.sequence with Nil -> false | Cons x _ -> result = x end }
+    =   assert{ nth 0 b.sequence = Some b.data[b.first] };
+        b.data[b.first]
+        
+        
+        
+
+  let pop (b: buffer 'a) : 'a
+    requires { b.len > 0 }
+    writes   { b.first, b.len, b.sequence }
+    ensures  { b.len = (old b.len) - 1 }
+    ensures  { match old b.sequence with
+               | Nil -> false
+               | Cons x l -> result = x /\ b.sequence = l end }
+    =
+    'Init: 
+    let res = head b in
+      if(b.first = b.len) then
+          b.first <- 0
+      else
+          b.first <- b.first + 1;
+    
+      b.len <- b.len - 1;    
+      assert{forall i : int. b.first <= i < b.len -> (at b.first 'Init) + i - b.len  = b.first + i };
+      assert{forall i : int. b.first <= i < b.len -> nth i (at b.sequence 'Init) = nth i b.sequence };
+      match b.sequence with
+       | Nil -> ()
+       | Cons x l -> b.sequence <- l 
+      end;
+      res
+end
+
+module Harness
+
+  use import RingBuffer
+  use import list.List
+
+  let harness () =
+    let b = create 10 0 in
+    push b 1;
+    push b 2;
+    push b 3;
+    let x = pop b in assert { x = 1 };
+    let x = pop b in assert { x = 2 };
+    let x = pop b in assert { x = 3 };
+    ()
+
+  let harness2 () =
+    let b = create 3 0 in
+    push b 1;
+    assert { sequence b = Cons 1 Nil };
+    push b 2;
+    assert { sequence b = Cons 1 (Cons 2 Nil) };
+    push b 3;
+    assert { sequence b = Cons 1 (Cons 2 (Cons 3 Nil)) };
+    let x = pop b in assert { x = 1 };
+    assert { sequence b = Cons 2 (Cons 3 Nil) };
+    push b 4;
+    assert { sequence b = Cons 2 (Cons 3 (Cons 4 Nil)) };
+    let x = pop b in assert { x = 2 };
+    assert { sequence b = Cons 3 (Cons 4 Nil) };
+    let x = pop b in assert { x = 3 };
+    assert { sequence b = Cons 4 Nil };
+    let x = pop b in assert { x = 4 };
+    ()
+
+  use import int.Int
+
+  let test (x: int) (y: int) (z: int) =
+    let b = create 2 0 in
+    push b x;
+    push b y;
+    assert { sequence b = Cons x (Cons y Nil) };
+    let h = pop b in assert { h = x };
+    assert { sequence b = Cons y Nil };
+    push b z;
+    assert { sequence b = Cons y (Cons z Nil) };
+    let h = pop b in assert { h = y };
+    let h = pop b in assert { h = z }
+
+end
+
+(** With sequences instead of lists *)
+
+module RingBufferSeq
+
+  use import int.Int
+  use import seq.Seq as S
+  use import array.Array
+
+  type buffer 'a = {
+    mutable first: int;
+    mutable len  : int;
+            data : array 'a;
+    ghost mutable sequence: S.seq 'a;
+  }
+  invariant {
+    let size = Array.length self.data in
+    0 <= self.first <  size /\
+    0 <= self.len   <= size /\
+    self.len = S.length self.sequence /\
+    forall i: int. 0 <= i < self.len ->
+      (self.first + i < size ->
+         S.([]) self.sequence i = self.data[self.first + i]) /\
+      (0 <= self.first + i - size ->
+         S.([]) self.sequence i = self.data[self.first + i - size])
+  }
+
+  (* total capacity of the buffer *)
+  function size (b: buffer 'a) : int = Array.length b.data
+
+  (* length = number of elements *)
+  function length (b: buffer 'a) : int = b.len
+
+  (* code *)
+
+  val create (n: int) (dummy: 'a) : buffer 'a
+    requires { n > 0 }
+    ensures  { size result = n }
+    ensures  { result.sequence = S.empty }
+   (* = ... *)
+
+  let length (b: buffer 'a) : int
+    ensures { result = length b }
+  = b.len
+
+  val clear (b: buffer 'a) : unit
+    writes  { b.len, b.sequence }
+    ensures { length b = 0 }
+    ensures { b.sequence = S.empty }
+     (* = ... *)
+  
+
+  let push (b: buffer 'a) (x: 'a) : unit
+    requires { length b < size b }
+    writes   { b.data.elts, b.len, b.sequence }
+    ensures  { length b = (old (length b)) + 1 }
+    ensures  { b.sequence = S.snoc (old b.sequence) x }
+  = ghost b.sequence <- S.snoc b.sequence x;
+    let i = b.first + b.len in
+    let n = Array.length b.data in
+    b.data[if i >= n then i - n else i] <- x;
+    b.len <- b.len + 1
+
+  val head (b: buffer 'a) : 'a
+    requires { length b > 0 }
+    ensures  { result = S.([]) b.sequence 0 }
+    (* = ... *)
+
+
+  val pop (b: buffer 'a) : 'a
+    requires { length b > 0 }
+    writes   { b.first, b.len, b.sequence }
+    ensures  { length b = (old (length b)) - 1 }
+    ensures  { result = S.([]) (old b.sequence) 0 }
+    ensures  { b.sequence = (old b.sequence)[1 ..] }
+   (* = ... *)
+
+
+end

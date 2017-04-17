@@ -1,0 +1,16 @@
+(*
+	TP1 : Exercice 3
+*)
+theory Exercice3
+
+	type homme 
+	predicate estMortel homme
+	predicate estHomme homme
+
+	constant socrate : homme
+
+	axiom R1 : forall h:homme. estMortel(h)
+	axiom R2 : estHomme(socrate)
+
+	goal G1 : estMortel(socrate)
+end	

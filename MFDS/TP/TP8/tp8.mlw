@@ -1,0 +1,90 @@
+(*
+  TP8
+*)
+
+module Naif
+
+  use import int.Int
+  use import ref.Refint
+  use export array.Array
+  use export array.ArraySum
+  (* contient [sum a l h] la somme de a[l..h[ et les lemmes associes *)
+    
+    
+  let soustab_max_naif_bis (t: array int) (i j :  int) : int = 
+      requires { 0 <= i <= j <= t.length }
+      ensures { result = sum t i j }
+      let res = ref 0 in
+      for k =  i to j-1 do
+        invariant { !res = sum t i k }
+        res := !res + t[k] ;
+      done;
+      !res 
+    
+
+  let soustab_max_naif (t: array int) (ghost bas haut: ref int) : int =
+     ensures {forall x,y:int. 0 <= x < y < t.length -> result >= sum t x y  }
+     ensures { 0 <= !bas <= !haut < t.length }
+     ensures { result = sum t !bas !haut }
+    (*let max_i = ref 0 in
+    let max_j = ref 0 in *)
+    let max_somme = ref 0 in
+    let cur_somme = ref 0 in
+    for i = 0 to t.length-1 do
+   
+      invariant { 0 <= i <= !bas <= !haut < t.length }
+      invariant { !max_somme >= !cur_somme }
+        for j = i to t.length-1 do 
+            invariant { forall x,y:int. i <= x < y < j -> !max_somme >= sum t x y }
+            invariant { !cur_somme = sum t i j }
+            invariant { 0 <= i <= !bas <= !haut <= j < t.length }
+            invariant { !max_somme >= !cur_somme }
+            cur_somme := (soustab_max_naif_bis t i j);
+            if !cur_somme > !max_somme then begin
+                max_somme := !cur_somme;
+                (*max_i := i;
+                max_j := j;*)
+                ghost bas := i;
+                ghost haut := j;
+                end;
+        done;
+    done;
+    !max_somme
+        
+
+end
+
+(*module Test
+  use import int.Int
+  use import Naif
+  use import ref.Refint
+
+  let test_case () =
+    let n = 9 in
+    let a = make n 0 in
+    a[0] <- -2;
+    a[1] <- 1;
+    a[2] <- -3;
+    a[3] <- 4;
+    a[4] <- -1;
+    a[5] <- 2;
+    a[6] <- 1;
+    a[7] <- -5;
+    a[8] <- 4;
+    let s = soustab_max_naif a (ref 3) (ref 7) in 
+        assert { s = 6 } 
+  
+end*)
+
+module Kadane
+
+  use import int.Int
+  use import ref.Refint
+  use import array.Array
+  use import array.ArraySum
+
+  let soustab_max (t: array int) (ghost bas haut: ref int) : int = 
+
+     ensures {forall x,y:int. 0 <= x < y <= t.length -> result >= ArraySum.sum t x y  }
+    0
+end

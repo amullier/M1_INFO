@@ -1,0 +1,31 @@
+(*
+  TP4 - Exercice 2
+*)
+module TabSum
+
+  use import int.Int
+  use import ref.Ref
+  use import array.Array as A
+  use import array.ArraySum as AS
+
+  let somme_tab (a : array int) : int = 
+        ensures{ result = AS.sum a 0 (a.length) }
+        let res = ref 0 in
+        for i=0 to (a.length-1) do
+            invariant{ !res = (AS.sum a 0 i) }
+            res := !res + a[i]
+        done;
+        !res
+end
+
+module TestCase
+
+  use import TabSum 
+  use import array.Array
+  use import array.ArraySum
+
+  let test_case () =
+      let tab = A.make 4 2 in
+      let res = somme_tab tab in
+      assert{res = AS.sum tab 0 (tab.length)}
+end

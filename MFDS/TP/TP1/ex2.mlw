@@ -1,0 +1,18 @@
+(*
+	TP1 : Exercice 2
+*)
+theory Exercice2
+
+	type t
+  	predicate a 
+	predicate b
+	predicate q
+	predicate p
+
+	predicate p2 t
+
+	goal G2_1 : a/\b -> b/\a
+	goal G2_2 : not(p/\q) <-> (not p \/ not q)
+	goal G2_3 : not(exists x:t. p2(x)) -> (forall x:t.not p2(x))
+
+end	

@@ -1,0 +1,77 @@
+(*
+ TD3 : Premiers programmes en Why3
+*)
+module TD3
+    use import int.Int
+    use import ref.Ref
+    use import array.Array
+    
+(* Exercice 1 *)
+    function fact int : int
+    
+    axiom fact_zero : fact 0 = 1
+    axiom fact_succ : forall a:int. (0<a) -> (fact a = a*(fact a-1))
+
+    let factorielle (n:int) : int =
+        requires{n>=0}
+        ensures{result = fact n}
+        
+        let i = ref n in
+        let res = ref 1 in
+        while !res < !i do
+            variant{!i}
+            
+            invariant{!i>=0}
+            invariant{!res*(fact !i)=fact n}
+            
+            res := (!i * !res)
+        done;
+        !res
+    
+    (* en récursif *)
+    let rec factorielleRec(n:int) : int = 
+        requires{n>=0}
+        ensures{result=fact n}
+        
+        variant{n}
+        if(n=0)then 1
+        else n*(factorielleRec n-1)
+
+(* Exercice 2 *)
+    let exercice2 (n: ref int) = 
+        requires{!n>=0}
+        ensures{!n=0}
+        
+        while !n > 0 do
+            variant{!n}
+            invariant{!n>=0}
+            n := !n -1
+        done;
+        
+(* Exercice 3 *)
+    let exercice3 (x y:int) : int =
+        requires{(x>=0) /\ (y>=0)}
+        ensures{result=(x+y)}
+
+        let res = ref x in
+        for i=0 to (y-1) do
+            invariant{!res = x + !i}
+            res := (1 + !res)
+        done;
+        !res
+
+(* Exercice 4 *)
+    let exercice4 (t : array int) =
+        ensures{forall n:int. (0<=n<(length t))->((old t)[n]+3 = t[n])}
+        'Init:
+        for i=0 to (length t)-1 do
+            invariant{
+                forall n:int. (0<=n<i) -> (t[n] = (at 'Init t)[n] +3)
+            }
+            invariant{
+                forall n:int. (i<=n<(length t))-> (t[n] = (at 'Init t)[n])
+            }
+            t[i]:=t[i] +3;
+        done
+
+end

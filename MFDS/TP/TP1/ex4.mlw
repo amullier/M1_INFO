@@ -1,0 +1,30 @@
+(*
+	TP1 : Exercice 4
+*)
+theory Exercice4
+
+	type personne = AppleBee | Beatle | Casey | Doodle | EastWood
+
+	predicate est_menteur personne
+
+	axiom P6 : exists x:personne.( not(est_menteur(x)) /\ (forall y:personne.
+	not(est_menteur(y)) -> (x=y)))
+
+	axiom P1 : est_menteur(AppleBee) -> est_menteur(AppleBee)
+
+	axiom P2 : est_menteur(Beatle) -> est_menteur(Doodle)
+
+	axiom P3 : est_menteur(Casey) -> not(est_menteur(Casey))
+
+	axiom P4 : est_menteur(Doodle) -> est_menteur(Beatle)
+
+	axiom P5 : est_menteur(EastWood) -> est_menteur(EastWood)
+	
+
+	goal R1 :   est_menteur(AppleBee)
+	goal R2 :   est_menteur(Beatle)
+	goal R3 :   not  est_menteur(Casey) (* le menteur *)
+	goal R4 :   est_menteur(Doodle)
+	goal R5 :   est_menteur(EastWood)
+
+end	

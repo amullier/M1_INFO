@@ -1,0 +1,47 @@
+(*
+  TP2 : Partie 1
+*)
+module Todo
+  use import int.Int
+  use import matrix.Matrix as Mx
+  
+
+  type mint =  matrix int
+
+  let testRows () =  let a = make 2 2 0 in
+                     assert{Mx.rows a = 2};
+                     Mx.set a 0 0 2;
+                     assert{Mx.get a 0 0 = 2};
+                     assert{Mx.get a 1 1 = 0};
+    ()
+
+  let taille (m: mint) : int = 
+        requires{0<=Mx.rows m}
+        requires{0<=Mx.columns m}
+        ensures{result = Mx.rows m * Mx.columns m}
+        let nbRows = Mx.rows m in  nbRows  * (Mx.columns m)
+                                        
+
+    
+    predicate ttes_cases_sauf_une (m: matrix int) = 
+        exists k z : int. (Mx.valid_index m k z) /\ (Mx.get m k z = 1)
+        /\forall i j : int. (Mx.valid_index m i j) -> (Mx.get m i j = 2) \/ (i=k /\ j=z)
+       
+        
+    let testPredicate () = let a = make 2 2 2 in
+                     assert{Mx.rows a = 2};
+                     Mx.set a 0 0 1; (* Mx.set a 0 0 0; *)
+                     assert{ttes_cases_sauf_une a};
+    ()
+  
+end
+
+module Somme
+  use import int.Int
+  use import matrix.Matrix as Mx
+  use import map.MapSum as M
+  use import Todo
+
+  function somme_ligne1 (m:mint) : int =
+      M.sum (m.elts[0]) 0 (Mx.columns m)
+end 

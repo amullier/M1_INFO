@@ -1,0 +1,76 @@
+(*
+  TP2 : Partie 2
+*)
+module Labyrinthe
+
+  use import int.Int
+  use import bool.Bool
+  use import matrix.Matrix as Mx
+  use import ref.Ref
+
+  (* question 1 *)
+  type board =  matrix int
+
+  type direction = Haut | Bas | Gauche | Droite
+
+  (* question 2 *)
+    predicate valeurs_valides(l : board) = 
+        forall i j :int.(0<= Mx.get l i j <=2)
+  
+    predicate sortie_unique(l:board)=
+        (exists i j:int. ((Mx.get l i j) =2) ) 
+        /\
+        (forall i j i2 j2 : int.
+                ((Mx.get l i j) =2)/\((Mx.get l i2 j2) =2) -> ((i=i2)/\(j=j2))
+        )
+    
+  predicate ok_board (b : board) = (valeurs_valides b)/\(sortie_unique b)
+
+
+
+  (* question 3 *)
+  predicate position_valide (b : board) (i j:int) =
+    (Mx.get b i j = 0)\/(Mx.get b i j = 2)
+
+
+  (* question 4 *)
+  predicate won (b : board) (i j : int) =  
+    (Mx.get b i j = 2)
+  
+
+  val gagne (b : board) (i j : int) : bool
+        requires{Mx.valid_index b i j}
+        ensures{won b i j}
+  
+
+  (* question 5 *)
+  val is_possible (b : board) (i j : int) : bool
+        requires{Mx.valid_index b i j}
+        ensures{position_valide b i j}
+
+
+  (* question 6 *)
+  val move (b : board) (i j: int) (d : direction) : (index)
+        requires{Mx.valid_index b i j}     
+        ensures{position_valide b result.1}
+
+(*   
+  (* question 9 *)
+  val mk_board (n : int) (m : int) : board (* a completer *)
+
+  (* question 12 *)
+  val initial_position (b : board) : index (* a completer *)
+*)
+end
+(*
+module TestMaze
+  use import int.Int
+  use import bool.Bool
+  use import matrix.Matrix as Mx
+  use import Maze
+
+  let test_maze () =
+    (* a completer - question 11 *)
+    ()
+end
+*)
